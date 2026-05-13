@@ -273,6 +273,65 @@ body{
     color:#888;
     cursor:not-allowed
 }
+/* =========================
+   APPLICATIONS POLYCADEMIA
+========================= */
+
+.apps-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:18px;
+    margin-top:20px;
+}
+
+.app-box{
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s ease;
+    backdrop-filter:blur(10px);
+}
+
+.app-box:hover{
+    transform:translateY(-6px) scale(1.03);
+    background:rgba(255,255,255,0.2);
+}
+
+.app-box img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:12px;
+}
+
+.app-box span{
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+}
+
+/* Zone dynamique */
+
+#dynamic-app{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 12px;
+    animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 </style>
 </head>
 <body>
@@ -344,6 +403,65 @@ body{
         <p>Utiliser outils spéciaux : <strong style="color:<?= $canUseTools ? '#8ef0b0' : '#ffb3b3' ?>"><?= $canUseTools ? 'Autorisé ✅' : 'Refusé ❌' ?></strong></p>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Applications Polycademia -->
+<div class="liquidGlass-wrapper">
+
+  <div class="liquidGlass-effect"></div>
+  <div class="liquidGlass-tint"></div>
+  <div class="liquidGlass-shine"></div>
+
+  <div class="card">
+
+    <h2 class="card-title">
+      🚀 Applications Polycademia
+    </h2>
+
+    <p style="margin-bottom:15px;">
+      Accède aux fonctionnalités intelligentes de Polycademia.
+    </p>
+
+    <div class="apps-grid">
+
+      <!-- POLYXAMS -->
+      <div class="app-box" onclick="loadApp('polyxams')">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+
+        <span>Polyxams</span>
+
+      </div>
+
+      <!-- FUTURES APPLICATIONS -->
+
+      <div class="app-box">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+
+        <span>PolySlides</span>
+
+      </div>
+
+      <div class="app-box">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+
+        <span>PolyDrive</span>
+
+      </div>
+
+      <div class="app-box">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3079/3079165.png">
+
+        <span>PolyCalc</span>
+
+      </div>
+
+    </div>
+
   </div>
 </div>
 
