@@ -98,12 +98,19 @@ body{
 
 .app-card img{
 
-    width:90px;
-    height:90px;
+    width:140px;
+    height:140px;
 
     object-fit:contain;
 
     margin-bottom:18px;
+
+    transition:transform 0.3s ease;
+}
+
+.app-card:hover img{
+
+    transform:scale(1.08);
 }
 
 .app-card h2{
@@ -198,7 +205,7 @@ onclick="window.location.href='student.php'">
 
 <div class="page-title">
 
-    <h1>🚀 Logiciels Polycademia</h1>
+    <h1>Logiciels Polycademia</h1>
 
     <p>
         Toutes les applications intelligentes réunies au même endroit.
@@ -215,12 +222,12 @@ onclick="window.location.href='student.php'">
     <div class="app-card"
     onclick="loadApp('polyxams')">
 
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
-
-        <h2>Polyxams</h2>
+        <img src="https://i.ibb.co/Z1W0NxTx/Polymail-LOGO.png">
+      
+      <h2>Polymail</h2>
 
         <p>
-            Exercices, astuces et examens intelligents.
+            Messagerie chifrée de bout en bout.
         </p>
 
     </div>
@@ -229,12 +236,12 @@ onclick="window.location.href='student.php'">
 
     <div class="app-card">
 
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
-
-        <h2>PolySlides</h2>
+        <img src="https://i.ibb.co/3yk5tptp/Polydrive-LOGO.png">
+      
+      <h2>Polydrive</h2>
 
         <p>
-            Création de diaporamas collaboratifs.
+            Stockage cloud sécurisé 100%.
         </p>
 
     </div>
@@ -243,12 +250,12 @@ onclick="window.location.href='student.php'">
 
     <div class="app-card">
 
-        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+        <img src="https://i.ibb.co/Jjy6nkdx/Polycanva-LOGO.png">
 
-        <h2>PolyDrive</h2>
-
+      <h2>Polycanva</h2>
+   
         <p>
-            Stockage cloud scolaire sécurisé.
+            Création diaporama, note & docuemnt collaboratifs.
         </p>
 
     </div>
@@ -257,16 +264,64 @@ onclick="window.location.href='student.php'">
 
     <div class="app-card">
 
-        <img src="https://cdn-icons-png.flaticon.com/512/3079/3079165.png">
+        <img src="https://i.ibb.co/NgtsdRY6/polyxams-logo.png">
 
-        <h2>PolyCalc</h2>
+        <h2>Polyxams</h2>
 
         <p>
-            Calculatrice et outils mathématiques.
+            Exercices, astuces & leçons automatisée pour les révisions.
+        </p>
+
+    </div>
+  
+    <div class="app-card">
+
+        <img src="https://i.ibb.co/Y4983WZ3/Num-Works-LOGO.png">
+
+        <h2>NumWorks</h2>
+
+        <p>
+            Calculatrice intelligente.
+        </p>
+
+    </div>
+  
+    <div class="app-card">
+
+        <img src="https://i.ibb.co/XfRH6kj8/Geogebra-LOGO.png">
+
+        <h2>Geogebra</h2>
+
+        <p>
+            Geométrie au complet.
+        </p>
+
+    </div>
+  
+    <div class="app-card">
+
+        <img src="https://i.ibb.co/v6bKFHWg/Polygames-LOGO.png">
+
+        <h2>Polygame</h2>
+
+        <p>
+            Jeux éducatifs et amusantes.
         </p>
 
     </div>
 
+    <div class="app-card">
+
+        <img src="https://i.ibb.co/hF2fcjJc/Polycodes-LOGO.png">
+      
+      <h2>Polycodes</h2>
+
+        <p>
+            
+        </p>
+
+    </div>
+  
 </div>
 
 <!-- CONTENU DYNAMIQUE -->
