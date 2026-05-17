@@ -555,7 +555,7 @@
  <body><!-- Navigation -->
   <header class="navbar">
    <div class="logo">
-        <img src="https://i.ibb.co/cKjh6W5r/Polycademia.png" alt="Polycademia Logo">
+        <img src="https://i.ibb.co/3yZfFMVJ/Polycademia-LOGO.png" alt="Polycademia Logo">
         <span>Polycademia</span>
     </div>
     <nav>
