@@ -1,2 +1,2 @@
 # Geogebra : 
-![alt text](https://i.ibb.co/XfRH6kj8/Geogebra-LOGO.png "Geogebra-LOGO")
+![alt text](https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/Geogebra-LOGO.png "Geogebra-LOGO")
