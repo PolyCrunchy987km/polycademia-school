@@ -623,7 +623,7 @@
      <h1 data-i18n="about">À propos de nous</h1>
      <div class="about-content">
       <p data-i18n="about-1">Polycademia est une plateforme éducative innovante conçue pour révolutionner l'expérience scolaire. Notre mission est de connecter étudiants, enseignants et parents dans un environnement numérique sécurisé et intuitif.</p>
-      <p data-i18n="about-2">Fondée par une équipe passionnée d'éducateurs et de développeurs, Polyschool offre des outils modernes pour faciliter l'apprentissage, améliorer la communication et optimiser la gestion scolaire.</p>
+      <p data-i18n="about-2">Fondée par une équipe passionnée d'éducateurs et de développeurs, Polycademia offre des outils modernes pour faciliter l'apprentissage, améliorer la communication et optimiser la gestion scolaire.</p>
       <p data-i18n="about-3">Nous croyons en l'importance de l'éducation accessible et de qualité pour tous. C'est pourquoi nous nous efforçons de créer des solutions technologiques qui soutiennent et enrichissent le parcours éducatif de chaque utilisateur.</p>
      </div>
     </div>
@@ -687,14 +687,14 @@
     <div class="contact-container">
      <h1 data-i18n="contacts">Contacts</h1>
      <form class="contact-form" id="contact-form">
-      <div class="form-group"><label for="name">Nom complet</label> <input type="text" id="name" name="name" required>
+      <div class="form-group"><label for="name" data-i18n="name">Nom complet</label> <input type="text" id="name" name="name" required>
       </div>
-      <div class="form-group"><label for="email">Email</label> <input type="email" id="email" name="email" required>
+      <div class="form-group"><label for="email" data-i18n="mail">Email</label> <input type="email" id="email" name="email" required>
       </div>
-      <div class="form-group"><label for="subject">Sujet</label> <input type="text" id="subject" name="subject" required>
+      <div class="form-group"><label for="subject" data-i18n="subject">Sujet</label> <input type="text" id="subject" name="subject" required>
       </div>
-      <div class="form-group"><label for="message">Message</label> <textarea id="message" name="message" rows="5" required></textarea>
-      </div><button type="submit" class="submit-btn">Envoyer le message</button>
+      <div class="form-group"><label for="message" data-i18n="message">Message</label> <textarea id="message" name="message" rows="5" required></textarea>
+      </div><button type="submit" class="submit-btn" data-i18n="send">Envoyer le message</button>
      </form>
     </div>
    </section>
@@ -768,7 +768,14 @@
                 "ADMIN": "Partie administrateur :",
                 "ad1": "",
                 "ad2": "",
-                "ad3": ""
+                "ad3": "",
+
+             // Contacts page content
+             name:"Nom Complet",
+             mail:"Adresse électronique",
+             subject:"Sujet",
+             message:"Message",
+             send:"Envoyez le message",
             },
 
             en: {
@@ -801,7 +808,7 @@
                 
                 "about":"About US",
                 "about-1":"Polycademia is an innovative educational platform designed to revolutionise the school experience. Our mission is to connect students, teachers and parents in a secure and intuitive digital environment.",
-                "about-2":"Founded by a passionate team of educators and developers, Polyschool offers modern tools to facilitate learning, improve communication and optimise school management.",
+                "about-2":"Founded by a passionate team of educators and developers, Polycademia offers modern tools to facilitate learning, improve communication and optimise school management.",
                 "about-3":"We believe in the importance of accessible, quality education for all. That's why we strive to create technological solutions that support and enrich the educational journey of every user.",
 
                 // Rules page content
@@ -831,7 +838,14 @@
                 "ADMIN": "Administrator section:",
                 "ad1": "",
                 "ad2": "",
-                "ad3": ""
+                "ad3": "",
+
+                // Contact page content
+                name:"Full name",
+                mail:"Email",
+                subject:"Subject",
+                message:"Message",
+                send:"Send message",
             },
 
             jp: {
