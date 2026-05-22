@@ -12,7 +12,7 @@ $prenom = "";
 $nom = "";
 
 // --- Lecture du fichier users.txt pour récupérer prénom et nom ---
-$usersFile = __DIR__ . "/../data/user.txt";
+$usersFile = __DIR__ . "/../data/users.txt";
 if (file_exists($usersFile)) {
     $lines = file($usersFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
@@ -406,75 +406,16 @@ body{
   </div>
 </div>
 
-<!-- Applications Polycademia -->
-<div class="liquidGlass-wrapper">
-
-  <div class="liquidGlass-effect"></div>
-  <div class="liquidGlass-tint"></div>
-  <div class="liquidGlass-shine"></div>
-
-  <div class="card">
-
-    <h2 class="card-title">
-      🚀 Applications Polycademia
-    </h2>
-
-    <p style="margin-bottom:15px;">
-      Accède aux fonctionnalités intelligentes de Polycademia.
-    </p>
-
-    <div class="apps-grid">
-
-      <!-- POLYXAMS -->
-      <div class="app-box" onclick="loadApp('polyxams')">
-
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
-
-        <span>Polyxams</span>
-
-      </div>
-
-      <!-- FUTURES APPLICATIONS -->
-
-      <div class="app-box">
-
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
-
-        <span>PolySlides</span>
-
-      </div>
-
-      <div class="app-box">
-
-        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
-
-        <span>PolyDrive</span>
-
-      </div>
-
-      <div class="app-box">
-
-        <img src="https://cdn-icons-png.flaticon.com/512/3079/3079165.png">
-
-        <span>PolyCalc</span>
-
-      </div>
-
-    </div>
-
-  </div>
-</div>
-
 <!-- BARRE DU BAS -->
 <div class="bottom-bar">
-  <div class="logo"><img src="https://i.ibb.co/cKjh6W5r/Polycademia.png" alt="Logo"></div>
+  <div class="logo"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/web/Polycademia-LOGO.png" alt="Logo"></div>
   <button class="nav-btn" >Accueil</button>
   <button class="nav-btn" >Annonce</button>
   <button class="nav-btn" >Emploie du Temps</button>
   <button class="nav-btn" >Vie Scolaire</button>
   <button class="nav-btn" >Cours</button>
-  <button class="nav-btn" >Logiciel</button>
-  <button class="nav-btn" onclick="window.location.href='logout.php'">Déconnexion</button>
+  <button class="nav-btn" onclick="window.location.href='../data/php/Logiciel.php'>Logiciel</button>
+  <button class="nav-btn" onclick="window.location.href='../logout.php'">Déconnexion</button>
 </div>
 
 <script>
