@@ -26,6 +26,7 @@ export const refs = {
   'fr-fr': ['1AL20-10'],
   'fr-ch': ['11FA10-8'],
 }
+
 export default class CalculerDiscriminant extends Exercice {
   constructor() {
     super()
