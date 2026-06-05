@@ -109,6 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/web/Polycademia-LOGO.png?raw=true" type="image/png" >
+<link rel="shortcut icon" href="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/web/Polycademia-LOGO.png?raw=true" type="image/png">
 <title>Register Page</title>
 <style>
 @import url("https://fonts.goggleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
