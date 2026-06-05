@@ -216,10 +216,14 @@ body{
   z-index:3000;
 }
 .logo{
-  width:70px;height:70px;border-radius:50%;
+  width:70px;
+  height:70px;
+  border-radius:50%;
   background:rgba(246,124,30,0.95);
   border:1px solid rgba(255,255,255,0.2);
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   box-shadow:0 4px 14px rgba(0,0,0,0.25);
   cursor:pointer;
   transition:transform .3s;
@@ -245,6 +249,8 @@ body{
   transition:all .4s ease;
   pointer-events:none;
   z-index:3200;
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
+  cursor:pointer;
 }
 .nav-btn.show{
     opacity:1;
@@ -256,6 +262,10 @@ body{
 .nav-btn:nth-child(3){transition-delay:.1s;}
 .nav-btn:nth-child(4){transition-delay:.15s;}
 .nav-btn:nth-child(5){transition-delay:.2s;}
+  
+  .nav-btn:hover{
+    transform:scale(1.08);
+  }
 
 .btn{
     display:inline-block;
