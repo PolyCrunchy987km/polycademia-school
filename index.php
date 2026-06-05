@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Polycademia</title>
-  <link rel="icon" href="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/live/Polycademia-App-LOGO.svg?raw=true" type="image/png" >
-  <link rel="shortcut icon" href="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/live/Polycademia-App-LOGO.svg?raw=true" type="image/png">
+  <link rel="icon" href="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/live/Polycademia-App-LOGO.svg?raw=true" type="image/svg" >
+  <link rel="shortcut icon" href="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/live/Polycademia-App-LOGO.svg?raw=true" type="image/svg">
   <style>
         /* General reset */
         * {
