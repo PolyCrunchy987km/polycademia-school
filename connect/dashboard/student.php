@@ -355,7 +355,7 @@ body{
     <!-- Cours -->
     <div class="liquidGlass-wrapper"><div class="liquidGlass-effect"></div><div class="liquidGlass-tint"></div><div class="liquidGlass-shine"></div>
       <div class="card">
-        <h2 class="card-title"><img src="https://i.ibb.co/NdNYpkF4/cours-dashboard.png" alt="cours-dashboard" width="30"> Cours actuel</h2>
+        <h2 class="card-title"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/icons/dashboard/cours-dashboard.png?raw=true" alt="cours-dashboard" width="30"> Cours actuel</h2>
         <p><?= e($courses[0]['name'] ?? 'Aucun cours') ?></p>
         <div class="progress-bar"><div class="progress-fill" style="width:<?= (int)($courses[0]['progress'] ?? 0) ?>%"></div></div>
         <p>Progression : <?= e($courses[0]['progress'] ?? 0) ?>%</p>
@@ -365,7 +365,7 @@ body{
     <!-- Notes -->
     <div class="liquidGlass-wrapper"><div class="liquidGlass-effect"></div><div class="liquidGlass-tint"></div><div class="liquidGlass-shine"></div>
       <div class="card">
-        <h2 class="card-title"><img src="https://i.ibb.co/gM99T1MH/notes-dashboard-removebg-preview.png" alt="notes-dashboard-removebg-preview" width="30"> Mes notes</h2>
+        <h2 class="card-title"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/icons/dashboard/notes-dashboard.png?raw=true" alt="notes-dashboard" width="30"> Mes notes</h2>
         <?php foreach($notes as $n): ?>
           <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.1);padding:6px 0;">
             <span><?= e($n['course']) ?></span><strong><?= e($n['grade']) ?></strong>
@@ -378,7 +378,7 @@ body{
     <!-- Devoirs -->
     <div class="liquidGlass-wrapper"><div class="liquidGlass-effect"></div><div class="liquidGlass-tint"></div><div class="liquidGlass-shine"></div>
       <div class="card">
-        <h2 class="card-title" ><img src="https://i.ibb.co/B5qCd8tb/homework-dashboard.png" alt="homework-dashboard" width="30"> Devoirs à rendre</h2>
+        <h2 class="card-title" ><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/icons/dashboard/homework-dashboard.png?raw=true" alt="homework-dashboard" width="30"> Devoirs à rendre</h2>
         <?php foreach($assignments as $a): ?>
           <div style="display:flex;justify-content:space-between;padding:6px 0;">
             <span><?= e($a['title']) ?></span><span><?= e($a['due']) ?></span>
@@ -390,7 +390,7 @@ body{
     <!-- Messages -->
     <div class="liquidGlass-wrapper"><div class="liquidGlass-effect"></div><div class="liquidGlass-tint"></div><div class="liquidGlass-shine"></div>
       <div class="card">
-        <h2 class="card-title"><img src="https://i.ibb.co/W4vnRFG5/message-dashboard-removebg-preview.png" alt="message-dashboard-removebg-preview" width="30"> Messages récents</h2>
+        <h2 class="card-title"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/icons/dashboard/message-dashboard.png?raw=true" alt="message-dashboard" width="30"> Messages récents</h2>
         <?php foreach($messages as $m): ?>
           <div style="margin-bottom:6px;"><strong><?= e($m['from']) ?> :</strong> <?= e($m['text']) ?> <em>(<?= e($m['time']) ?>)</em></div>
         <?php endforeach; ?>
@@ -400,7 +400,7 @@ body{
     <!-- Outils spéciaux -->
     <div class="liquidGlass-wrapper"><div class="liquidGlass-effect"></div><div class="liquidGlass-tint"></div><div class="liquidGlass-shine"></div>
       <div class="card">
-        <h2 class="card-title"><img src="https://i.ibb.co/0V2f5RmP/outils-dashboard.png" alt="outils-dashboard" width="30"> Outils spéciaux</h2>
+        <h2 class="card-title"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/icons/dashboard/outils-dashboard.png?raw=true" alt="outils-dashboard" width="30"> Outils spéciaux</h2>
         <button class="btn" onclick="showMessage('Accéder aux outils')" <?= $canUseTools ? '' : 'disabled' ?>>Accéder</button>
       </div>
     </div>
@@ -408,7 +408,7 @@ body{
     <!-- Permissions -->
     <div class="liquidGlass-wrapper"><div class="liquidGlass-effect"></div><div class="liquidGlass-tint"></div><div class="liquidGlass-shine"></div>
       <div class="card">
-        <h2 class="card-title"><img src="https://i.ibb.co/RT6rL5s0/cadenas-dashboard-removebg-preview.png" alt="cadenas-dashboard-removebg-preview" width="30"> Permissions</h2>
+        <h2 class="card-title"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/icons/dashboard/cadenas-dashboard.png?raw=true" alt="cadenas-dashboard" width="30"> Permissions</h2>
         <p>Changer les notes : <strong style="color:<?= $canChangeNotes ? '#8ef0b0' : '#ffb3b3' ?>"><?= $canChangeNotes ? 'Autorisé ✅' : 'Refusé ❌' ?></strong></p>
         <p>Utiliser outils spéciaux : <strong style="color:<?= $canUseTools ? '#8ef0b0' : '#ffb3b3' ?>"><?= $canUseTools ? 'Autorisé ✅' : 'Refusé ❌' ?></strong></p>
       </div>
@@ -418,7 +418,7 @@ body{
 
 <!-- BARRE DU BAS -->
 <div class="bottom-bar">
-  <div class="logo"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/web/Polycademia-LOGO.png" alt="Logo"></div>
+  <div class="logo"><img src="https://github.com/PolyCrunchy987km/polycademia-school/blob/main/connect/data/img/logo/web/Polycademia-LOGO.png?raw=true" alt="Logo"></div>
   <button class="nav-btn" >Accueil</button>
   <button class="nav-btn" >Annonce</button>
   <button class="nav-btn" >Emploie du Temps</button>
