@@ -252,7 +252,7 @@ onclick="window.location.href='student.php'">
 
         <img src="https://i.ibb.co/Jjy6nkdx/Polycanva-LOGO.png">
 
-      <h2 onclick="window.location.href=''>Polycanva</h2>
+      <h2 onclick="window.location.href='../../dashboard/utilities/Polycanva/index.php'">Polycanva</h2>
    
         <p>
             Création diaporama, note & docuemnt collaboratifs.
@@ -266,7 +266,7 @@ onclick="window.location.href='student.php'">
 
         <img src="https://i.ibb.co/NgtsdRY6/polyxams-logo.png">
 
-        <h2 onclick="window.location.href=''>Polyxams</h2>
+        <h2 onclick="window.location.href='../../dashboard/utilities/Polyxams/index.php'">Polyxams</h2>
 
         <p>
             Exercices, astuces & leçons automatisée pour les révisions.
@@ -278,7 +278,7 @@ onclick="window.location.href='student.php'">
 
         <img src="https://i.ibb.co/Y4983WZ3/Num-Works-LOGO.png">
 
-        <h2 onclick="window.location.href=''>NumWorks</h2>
+        <h2 onclick="window.location.href='../../dashboard/utilities/NumWorks/numworks-simulator-24.8.0.html'">NumWorks</h2>
 
         <p>
             Calculatrice intelligente.
@@ -290,7 +290,7 @@ onclick="window.location.href='student.php'">
 
         <img src="https://i.ibb.co/XfRH6kj8/Geogebra-LOGO.png">
 
-        <h2 onclick="window.location.href=''>Geogebra</h2>
+        <h2 onclick="window.location.href='../../dashboard/utilities/Geogebra/geogebra.html'">Geogebra</h2>
 
         <p>
             Geométrie au complet.
@@ -302,7 +302,7 @@ onclick="window.location.href='student.php'">
 
         <img src="https://i.ibb.co/v6bKFHWg/Polygames-LOGO.png">
 
-        <h2 onclick="window.location.href=''>Polygame</h2>
+        <h2 onclick="window.location.href='../../dashboard/utilities/Polygames/index.php'">Polygames</h2>
 
         <p>
             Jeux éducatifs et amusantes.
@@ -314,7 +314,7 @@ onclick="window.location.href='student.php'">
 
         <img src="https://i.ibb.co/hF2fcjJc/Polycodes-LOGO.png">
       
-      <h2 onclick="window.location.href=''>Polycodes</h2>
+      <h2 onclick="window.location.href='../../dashboard/utilities/Polycodes/index.php'">Polycodes</h2>
 
         <p>
             
