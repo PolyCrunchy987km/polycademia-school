@@ -426,7 +426,7 @@ body{
   <button class="nav-btn" >Emploie du Temps</button>
   <button class="nav-btn" >Vie Scolaire</button>
   <button class="nav-btn" >Cours</button>
-  <button class="nav-btn" onclick="window.location.href='../data/php/Logiciel.php'>Logiciel</button>
+  <button class="nav-btn" onclick="window.location.href='../data/php/Logiciel.php'">Logiciel</button>
   <button class="nav-btn" onclick="window.location.href='../logout.php'">Déconnexion</button>
 </div>
 
