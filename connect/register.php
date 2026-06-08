@@ -1,105 +1,210 @@
+```php id="jlwmk8"
 <?php
+
+include "config.php";
+
 $success_message = "";
 $error_message = "";
 
-// Fichiers de stockage
-$usersFile = __DIR__ . "/data/user.txt";
 $permissionsFile = __DIR__ . "/data/json/authorizations.json";
 
-// Fonction pour les permissions par défaut selon le rôle
+// Permissions par défaut
 function default_permissions($role) {
+
     switch($role) {
+
         case 'student':
-            return ['changer_notes'=>false,'utiliser_outils'=>true];
+            return [
+                'changer_notes' => false,
+                'utiliser_outils' => true
+            ];
+
         case 'teacher':
-            return ['changer_notes'=>true,'utiliser_outils'=>true];
+            return [
+                'changer_notes' => true,
+                'utiliser_outils' => true
+            ];
+
         case 'worker':
-            return ['changer_notes'=>false,'utiliser_outils'=>true];
+            return [
+                'changer_notes' => false,
+                'utiliser_outils' => true
+            ];
+
         case 'principal':
-            return ['changer_notes'=>true,'utiliser_outils'=>true];
+            return [
+                'changer_notes' => true,
+                'utiliser_outils' => true
+            ];
+
         default:
-            return ['changer_notes'=>false,'utiliser_outils'=>false];
+            return [
+                'changer_notes' => false,
+                'utiliser_outils' => false
+            ];
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $prenom = trim($_POST['prenom'] ?? '');
     $nom = trim($_POST['nom'] ?? '');
     $password = trim($_POST['password'] ?? '');
     $role = trim($_POST['role'] ?? '');
 
+    // Vérification
     if ($prenom === '' || $nom === '' || $password === '' || $role === '') {
+
         $error_message = "⚠️ Tous les champs sont obligatoires.";
-    } elseif (preg_match("/[:\\r\\n]/", $prenom.$nom.$password.$role)) {
-        $error_message = "⚠️ Caractères interdits détectés.";
+
     } else {
-        // Génération du nom d'utilisateur
-        $baseUser = strtolower(substr($prenom,0,2).".".preg_replace('/\s+/', '', $nom));
+
+        // Génération username
+        $baseUser = strtolower(
+            substr($prenom, 0, 2) . "." .
+            preg_replace('/\s+/', '', $nom)
+        );
+
         $username = $baseUser;
 
-        $userFolder = __DIR__ . "/data/users/" . $username;
-        file_put_contents($userFolder . "/.htaccess", "Deny from all");
-        if (!file_exists($userFolder)) {
-            mkdir($userFolder, 0777, true);
-            file_put_contents($userFolder . "/notes.json", json_encode([]));
-            file_put_contents($userFolder . "/docs.json", json_encode([]));
-            file_put_contents($userFolder . "/slides.json", json_encode([]));
-            file_put_contents($userFolder . "/sheets.json", json_encode([]));
-            file_put_contents($userFolder . "/calendar.json", json_encode([]));
-            }
-
-        // S'assurer de l'unicité
-        $existingUsernames = [];
-        if(file_exists($usersFile)){
-            $lines = file($usersFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            foreach($lines as $line){
-                if(preg_match("/-\\s*([^:]+):/", $line, $m)){
-                    $existingUsernames[] = trim($m[1]);
-                }
-            }
-        }
-
+        // Vérifier unicité dans MySQL
         $suffix = 1;
-        while(in_array($username, $existingUsernames)){
-            $username = $baseUser.$suffix;
+
+        while (true) {
+
+            $stmt = $conn->prepare(
+                "SELECT id FROM users WHERE username = ?"
+            );
+
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            if ($result->num_rows === 0) {
+                break;
+            }
+
+            $username = $baseUser . $suffix;
             $suffix++;
-            if($suffix>1000){
-                $error_message = "❌ Impossible de générer un identifiant unique.";
+
+            if ($suffix > 1000) {
+
+                $error_message =
+                    "❌ Impossible de générer un identifiant unique.";
+
                 break;
             }
         }
 
-        // Écriture dans users.txt
-        if($error_message === ""){
-            $lineToWrite = "$prenom $nom - $username:$password:$role\n";
-            $fp = @fopen($usersFile,"a");
-            if($fp === false){
-                $error_message = "❌ Impossible d'ouvrir users.txt pour écriture.";
-            } else {
-                if(flock($fp, LOCK_EX)){
-                    fwrite($fp,$lineToWrite);
-                    fflush($fp);
-                    flock($fp, LOCK_UN);
-                    fclose($fp);
+        // Continuer si aucun problème
+        if ($error_message === "") {
 
-                    // Ajouter automatiquement dans permissions.json
-                    $permissions = [];
-                    if(file_exists($permissionsFile)){
-                        $permissions = json_decode(file_get_contents($permissionsFile), true) ?? [];
-                    }
-                    $permissions[$username] = default_permissions($role);
-                    file_put_contents($permissionsFile, json_encode($permissions, JSON_PRETTY_PRINT));
+            // Hash mot de passe
+            $hashedPassword = password_hash(
+                $password,
+                PASSWORD_DEFAULT
+            );
 
-                    $success_message = "<div style='text-align:center;'>
-                        <p><strong>$prenom $nom</strong></p>
-                        <p><strong>$username</strong> &nbsp;&nbsp; <em>$password</em></p>
-                        <p style='margin-top:8px;color:#bcd;'>✅ Inscription réussie — votre identifiant est <b>$username</b></p>
-                    </div>";
-                } else {
-                    fclose($fp);
-                    $error_message = "❌ Impossible de verrouiller users.txt.";
+            // Ajouter utilisateur
+            $stmt = $conn->prepare(
+                "INSERT INTO users
+                (username, password, role)
+                VALUES (?, ?, ?)"
+            );
+
+            $stmt->bind_param(
+                "sss",
+                $username,
+                $hashedPassword,
+                $role
+            );
+
+            if ($stmt->execute()) {
+
+                // Création dossier utilisateur
+                $userFolder =
+                    __DIR__ . "/data/users/" . $username;
+
+                if (!file_exists($userFolder)) {
+
+                    mkdir($userFolder, 0777, true);
+
+                    file_put_contents(
+                        $userFolder . "/notes.json",
+                        json_encode([])
+                    );
+
+                    file_put_contents(
+                        $userFolder . "/docs.json",
+                        json_encode([])
+                    );
+
+                    file_put_contents(
+                        $userFolder . "/slides.json",
+                        json_encode([])
+                    );
+
+                    file_put_contents(
+                        $userFolder . "/sheets.json",
+                        json_encode([])
+                    );
+
+                    file_put_contents(
+                        $userFolder . "/calendar.json",
+                        json_encode([])
+                    );
                 }
+
+                // Permissions JSON
+                $permissions = [];
+
+                if (file_exists($permissionsFile)) {
+
+                    $permissions =
+                        json_decode(
+                            file_get_contents($permissionsFile),
+                            true
+                        ) ?? [];
+                }
+
+                $permissions[$username] =
+                    default_permissions($role);
+
+                file_put_contents(
+                    $permissionsFile,
+                    json_encode(
+                        $permissions,
+                        JSON_PRETTY_PRINT
+                    )
+                );
+
+                $success_message = "
+                <div style='text-align:center;'>
+
+                    <p>
+                        <strong>$prenom $nom</strong>
+                    </p>
+
+                    <p>
+                        <strong>$username</strong>
+                    </p>
+
+                    <p style='margin-top:8px;color:#bcd;'>
+
+                        ✅ Inscription réussie
+
+                    </p>
+
+                </div>";
+
+            } else {
+
+                $error_message =
+                    "❌ Erreur lors de l'inscription.";
             }
+
+            $stmt->close();
         }
     }
 }
