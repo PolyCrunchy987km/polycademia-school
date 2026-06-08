@@ -1,103 +1,106 @@
+```php
 <?php
 session_start();
 
+include "config.php";
+
 $error_message = "";
 
-$usersFile = __DIR__ . "/data/user.txt";
 $permissionsFile = __DIR__ . "/data/json/authorizations.json";
-
-// 📁 Dossier utilisateur
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $username = trim($_POST["username"] ?? '');
     $password = trim($_POST["password"] ?? '');
 
-    $found = false;
-    $role = "";
+    if (empty($username) || empty($password)) {
 
-    // Vérifier les utilisateurs
-    if (file_exists($usersFile)) {
-
-        $lines = file($usersFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-        foreach ($lines as $line) {
-
-            if (preg_match("/- ([^:]+):([^:]+):(.+)$/", $line, $matches)) {
-
-                $user = trim($matches[1]);
-                $pass = trim($matches[2]);
-                $r = trim($matches[3]);
-
-                if ($user === $username && $pass === $password) {
-
-                    $found = true;
-                    $role = $r;
-                    break;
-                }
-            }
-        }
-    }
-
-    if ($found) {
-
-        $_SESSION["username"] = $username;
-        $_SESSION["role"] = $role;
-
-        $_SESSION["user_folder"] = __DIR__ . "/data/users/" . $username;
-
-        $_SESSION["notes_file"] = $_SESSION["user_folder"] . "/notes.json";
-        $_SESSION["docs_file"] = $_SESSION["user_folder"] . "/docs.json";
-        $_SESSION["slides_file"] = $_SESSION["user_folder"] . "/slides.json";
-        $_SESSION["sheets_file"] = $_SESSION["user_folder"] . "/sheets.json";
-        $_SESSION["calendar_file"] = $_SESSION["user_folder"] . "/calendar.json";
-
-        // Permissions étudiant
-        if ($role === "student" && file_exists($permissionsFile)) {
-
-            $permissions = json_decode(file_get_contents($permissionsFile), true) ?? [];
-
-            $_SESSION["permissions"] = $permissions[$username] ?? [];
-        }
-
-        // Redirection
-        switch ($role) {
-
-            case "admin":
-                header("Location: dashboard/admin.php");
-                exit;
-
-            case "parent":
-                header("Location: dashboard/parent.php");
-                exit;
-
-            case "principal":
-                header("Location: dashboard/principal.php");
-                exit;
-
-            case "student":
-                header("Location: dashboard/student.php");
-                exit;
-
-            case "teacher":
-                header("Location: dashboard/teacher.php");
-                exit;
-
-            case "worker":
-                header("Location: dashboard/worker.php");
-                exit;
-
-            default:
-                $error_message = "Rôle inconnu.";
-        }
+        $error_message = "Veuillez remplir tous les champs.";
 
     } else {
 
-        $error_message = "Nom d'utilisateur ou mot de passe incorrect.";
+        // Rechercher utilisateur
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+
+            $user = $result->fetch_assoc();
+
+            // Vérification mot de passe
+            if (password_verify($password, $user["password"])) {
+
+                $_SESSION["username"] = $user["username"];
+                $_SESSION["role"] = $user["role"];
+
+                $role = $user["role"];
+
+                $_SESSION["user_folder"] = __DIR__ . "/data/users/" . $username;
+
+                $_SESSION["notes_file"] = $_SESSION["user_folder"] . "/notes.json";
+                $_SESSION["docs_file"] = $_SESSION["user_folder"] . "/docs.json";
+                $_SESSION["slides_file"] = $_SESSION["user_folder"] . "/slides.json";
+                $_SESSION["sheets_file"] = $_SESSION["user_folder"] . "/sheets.json";
+                $_SESSION["calendar_file"] = $_SESSION["user_folder"] . "/calendar.json";
+
+                // Permissions étudiant
+                if ($role === "student" && file_exists($permissionsFile)) {
+
+                    $permissions = json_decode(file_get_contents($permissionsFile), true) ?? [];
+
+                    $_SESSION["permissions"] = $permissions[$username] ?? [];
+                }
+
+                // Redirection
+                switch ($role) {
+
+                    case "admin":
+                        header("Location: dashboard/admin.php");
+                        exit;
+
+                    case "parent":
+                        header("Location: dashboard/parent.php");
+                        exit;
+
+                    case "principal":
+                        header("Location: dashboard/principal.php");
+                        exit;
+
+                    case "student":
+                        header("Location: dashboard/student.php");
+                        exit;
+
+                    case "teacher":
+                        header("Location: dashboard/teacher.php");
+                        exit;
+
+                    case "worker":
+                        header("Location: dashboard/worker.php");
+                        exit;
+
+                    default:
+                        $error_message = "Rôle inconnu.";
+                }
+
+            } else {
+
+                $error_message = "Mot de passe incorrect.";
+
+            }
+
+        } else {
+
+            $error_message = "Utilisateur introuvable.";
+
+        }
+
+        $stmt->close();
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
