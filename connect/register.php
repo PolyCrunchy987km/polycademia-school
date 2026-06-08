@@ -1,4 +1,3 @@
-```php id="jlwmk8"
 <?php
 
 include "config.php";
